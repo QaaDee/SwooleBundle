@@ -51,7 +51,7 @@ class KernelListener
      * @param ResponseEvent $responseEvent
      * @return void
      */
-    public function onKernelResponse()
+    public function onKernelResponse(ResponseEvent $responseEvent)
     {
         if ($this->doctrine) {
             foreach ($this->doctrine->getManagers() as $manager) {
