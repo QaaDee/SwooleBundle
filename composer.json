@@ -1,0 +1,28 @@
+{
+  "name": "qade/swoole-bundle",
+  "version": "0.0.1",
+  "type": "symfony-bundle",
+  "description": "SwooleBundle",
+  "homepage": "https://github.com/QaaDee/SwooleBundle",
+  "keywords": [],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "QaaDee",
+      "email": "user.qade@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "openswoole/core": "22.0.*",
+    "openswoole/ide-helper": "22.0.*"
+  },
+  "require-dev": {
+
+  },
+  "autoload": {
+    "psr-4": {
+      "SwooleBundle\\": ""
+    }
+  }
+}
