@@ -31,29 +31,29 @@ class KernelListener
 
     public function onKernelRequest(RequestEvent $requestEvent)
     {
-        if($this->doctrine) {
-            /**
-             * @var $connection Connection
-             */
-            foreach ($this->doctrine->getConnections() as $connection) {
-                if($connection->isConnected()) {
-//                    if(!$connection->ping()) {
-//                        $connection->close();
-//                        $connection->connect();
-//                    }
+        if ($this->doctrine) {
+            foreach ($this->doctrine->getManagers() as $manager) {
+                $connection = $manager->getConnection();
+
+                if ($connection->isConnected()) {
+                    if (method_exists($connection, 'ping')) {
+                        if (!$connection->ping()) {
+                            $connection->close();
+                            $connection->connect();
+                        }
+                    }
                 }
             }
         }
-
     }
 
     /**
      * @param ResponseEvent $responseEvent
      * @return void
      */
-    public function onKernelResponse(ResponseEvent $responseEvent)
+    public function onKernelResponse()
     {
-        if($this->doctrine) {
+        if ($this->doctrine) {
             foreach ($this->doctrine->getManagers() as $manager) {
                 $manager->clear();
             }
