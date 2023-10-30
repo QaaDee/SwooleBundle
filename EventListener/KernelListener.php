@@ -37,10 +37,10 @@ class KernelListener
              */
             foreach ($this->doctrine->getConnections() as $connection) {
                 if($connection->isConnected()) {
-                    if(!$connection->ping()) {
-                        $connection->close();
-                        $connection->connect();
-                    }
+//                    if(!$connection->ping()) {
+//                        $connection->close();
+//                        $connection->connect();
+//                    }
                 }
             }
         }
